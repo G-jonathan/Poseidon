@@ -7,16 +7,18 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @NotBlank(message = "Username is mandatory")
     private String username;
     @NotBlank(message = "Password is mandatory")
     private String password;
     @NotBlank(message = "FullName is mandatory")
-    private String fullname;
+    @Column(name = "full_name")
+    private String fullName;
     @NotBlank(message = "Role is mandatory")
     private String role;
+    private boolean enabled;
 
     public Integer getId() {
         return id;
@@ -42,12 +44,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getRole() {
@@ -56,5 +58,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
