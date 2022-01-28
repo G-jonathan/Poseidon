@@ -73,7 +73,7 @@ public class BidList {
         return bidQuantity;
     }
 
-    public void setBidQuantity(double bidQuantity) {
+    public void setBidQuantity(Double bidQuantity) {
         this.bidQuantity = bidQuantity;
     }
 
@@ -81,7 +81,7 @@ public class BidList {
         return askQuantity;
     }
 
-    public void setAskQuantity(double askQuantity) {
+    public void setAskQuantity(Double askQuantity) {
         this.askQuantity = askQuantity;
     }
 
@@ -89,7 +89,7 @@ public class BidList {
         return bid;
     }
 
-    public void setBid(double bid) {
+    public void setBid(Double bid) {
         this.bid = bid;
     }
 
@@ -97,7 +97,7 @@ public class BidList {
         return ask;
     }
 
-    public void setAsk(double ask) {
+    public void setAsk(Double ask) {
         this.ask = ask;
     }
 

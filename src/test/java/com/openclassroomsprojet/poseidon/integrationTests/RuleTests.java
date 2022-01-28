@@ -1,4 +1,4 @@
-package com.openclassroomsprojet.poseidon;
+package com.openclassroomsprojet.poseidon.integrationTests;
 
 import com.openclassroomsprojet.poseidon.domain.RuleName;
 // import com.openclassroomsprojet.poseidon.repositories.RuleNameRepository;

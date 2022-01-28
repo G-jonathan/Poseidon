@@ -43,7 +43,7 @@ public class BidListController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Optional<BidList> bidList = bidListService.findBidListById(id);
         if (bidList.isPresent()) {
-            model.addAttribute("bidList", bidList);
+            model.addAttribute("bid_list", bidList);
         }
         else {
             throw new IllegalArgumentException("BidList id not found");
