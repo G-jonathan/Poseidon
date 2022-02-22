@@ -1,4 +1,4 @@
-package com.openclassroomsprojet.poseidon;
+package com.openclassroomsprojet.poseidon.integrationTests;
 import com.openclassroomsprojet.poseidon.domain.Trade;
 // import com.openclassroomsprojet.poseidon.repositories.TradeRepository;
 import org.junit.Assert;

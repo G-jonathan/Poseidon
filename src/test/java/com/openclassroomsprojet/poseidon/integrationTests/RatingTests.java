@@ -1,4 +1,4 @@
-package com.openclassroomsprojet.poseidon;
+package com.openclassroomsprojet.poseidon.integrationTests;
 
 import com.openclassroomsprojet.poseidon.domain.Rating;
 // import com.openclassroomsprojet.poseidon.repositories.RatingRepository;
