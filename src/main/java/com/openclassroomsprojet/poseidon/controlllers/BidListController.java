@@ -21,7 +21,7 @@ public class BidListController {
 
     @RequestMapping("/bidList/list")
     public String home(Model model) {
-        model.addAttribute("bid_list", bidListService.findAllBidList());
+        model.addAttribute("bidList", bidListService.findAllBidList());
         return "bidList/list";
     }
 
@@ -43,10 +43,11 @@ public class BidListController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Optional<BidList> bidList = bidListService.findBidListById(id);
         if (bidList.isPresent()) {
-            model.addAttribute("bid_list", bidList);
+            BidList test = bidList.get();
+            model.addAttribute("bidList", test);
         }
         else {
-            throw new IllegalArgumentException("BidList id not found");
+            throw new IllegalArgumentException("BidList id not found(id=" + id + ")");
         }
         return "bidList/update";
     }
@@ -57,6 +58,7 @@ public class BidListController {
             bidListService.saveBidList(bidList);
             return "redirect:/bidList/list";
         }
+        bidList.setBidListId(id);
         return "bidList/update";
     }
 
@@ -67,7 +69,7 @@ public class BidListController {
             bidListService.deleteBidListById(id);
         }
         else {
-            throw new IllegalArgumentException("BidList id not found");
+            throw new IllegalArgumentException("BidList id not found(id=" + id + ")");
         }
         return "redirect:/bidList/list";
     }
