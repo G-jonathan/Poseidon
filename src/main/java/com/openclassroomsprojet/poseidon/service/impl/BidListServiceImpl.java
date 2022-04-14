@@ -22,7 +22,7 @@ public class BidListServiceImpl implements IBidListService {
 
     @Override
     public Optional<BidList> findBidListById(int id) {
-        return bidListRepository.findById(id);
+        return bidListRepository.findBidListByBidListId(id);
     }
 
     @Override
