@@ -1,6 +1,8 @@
 package com.openclassroomsprojet.poseidon.controlllers;
 
 import com.openclassroomsprojet.poseidon.domain.Rating;
+import com.openclassroomsprojet.poseidon.service.IRatingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,15 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class RatingController {
-    // TODO: Inject Rating service
+    @Autowired
+    private IRatingService ratingService;
 
     @RequestMapping("/rating/list")
-    public String home(Model model)
-    {
-        // TODO: find all Rating, add to model
+    public String home(Model model) {
+        model.addAttribute("rating", ratingService.findAllRating());
         return "rating/list";
     }
 
@@ -27,27 +30,37 @@ public class RatingController {
     }
 
     @PostMapping("/rating/validate")
-    public String validate(@Valid Rating rating, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return Rating list
+    public String validate(@Valid Rating rating, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
+            ratingService.saveRating(rating);
+            return "redirect:/curvePoint/list";
+        }
         return "rating/add";
     }
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Rating by Id and to model then show to the form
+        Optional<Rating> rating = ratingService.findRatingById(id);
+        model.addAttribute("rating", rating.orElseThrow(() -> new IllegalArgumentException("Invalid Rating Id:" + id)));
         return "rating/update";
     }
 
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
-                               BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Rating and return Rating list
+    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating, BindingResult result, Model model) {
+        if (!result.hasErrors()) {
+            ratingService.saveRating(rating);
+        }
         return "redirect:/rating/list";
     }
 
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Rating by Id and delete the Rating, return to Rating list
+        Optional<Rating> rating = ratingService.findRatingById(id);
+        if (rating.isPresent()) {
+            ratingService.deleteRatingById(id);
+        } else {
+            throw new IllegalArgumentException("Rating id not found");
+        }
         return "redirect:/rating/list";
     }
 }
