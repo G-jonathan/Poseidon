@@ -1,7 +1,8 @@
 package com.openclassroomsprojet.poseidon.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -16,6 +17,7 @@ public class BidList {
     @NotBlank(message = "Type is mandatory")
     private String type;
     @Column(name = "bid_quantity")
+    @Min(value = 0, message = "Bid quantity should not be less than 0")
     private Double bidQuantity;
     @Column(name = "ask_quantity")
     private Double askQuantity;
@@ -32,6 +34,7 @@ public class BidList {
     @Column(name = "creation_name")
     private String creationName;
     @Column(name = "creation_date")
+    @DateTimeFormat
     private Date creationDate;
     @Column(name = "revision_name")
     private String revisionName;

@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.util.Optional;
 
+/**
+ * This controller provides CRUD operations on Rating entity
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
+
 @Controller
 public class RatingController {
     @Autowired

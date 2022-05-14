@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.util.Optional;
 
+/**
+ * This controller provides CRUD operations on CurvePoint entity
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
+
 @Controller
 public class CurvePointController {
     @Autowired
@@ -46,8 +53,8 @@ public class CurvePointController {
     }
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateCurve(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
+    public String updateCurve(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
             curvePointService.saveCurvePoint(curvePoint);
         }
         return "redirect:/curvePoint/list";

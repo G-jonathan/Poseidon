@@ -2,7 +2,6 @@ package com.openclassroomsprojet.poseidon.controllers;
 
 import com.openclassroomsprojet.poseidon.controlllers.BidListController;
 import com.openclassroomsprojet.poseidon.service.IBidListService;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

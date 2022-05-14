@@ -1,6 +1,7 @@
 package com.openclassroomsprojet.poseidon.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "rule_name")
@@ -9,12 +10,18 @@ public class RuleName {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
+    @NotBlank(message = "description is mandatory")
     private String description;
+    @NotBlank(message = "json is mandatory")
     private String json;
+    @NotBlank(message = "template is mandatory")
     private String template;
+    @NotBlank(message = "Sql str is mandatory")
     @Column(name = "sql_str")
     private String sqlStr;
+    @NotBlank(message = "sqlPart is mandatory")
     @Column(name = "sql_part")
     private String sqlPart;
 
