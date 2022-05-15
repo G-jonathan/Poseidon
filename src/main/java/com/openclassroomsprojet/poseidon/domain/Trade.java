@@ -1,6 +1,9 @@
 package com.openclassroomsprojet.poseidon.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -16,14 +19,19 @@ public class Trade {
     @NotBlank(message = "Type is mandatory")
     private String type;
     @Column(name = "buy_quantity")
+    @Min(value = 0, message = "Buy quantity should not be less than 0")
     private Double buyQuantity;
     @Column(name = "sell_quantity")
+    @Min(value = 0, message = "Sell quantity should not be less than 0")
     private Double sellQuantity;
     @Column(name = "buy_price")
+    @Min(value = 0, message = "Buy price should not be less than 0")
     private Double buyPrice;
     @Column(name = "sell_price")
+    @Min(value = 0, message = "Sell price should not be less than 0")
     private Double sellPrice;
     @Column(name = "trade_date")
+    @DateTimeFormat
     private Date tradeDate;
     private String security;
     private String status;
@@ -33,10 +41,12 @@ public class Trade {
     @Column(name = "creation_name")
     private String creationName;
     @Column(name = "creation_date")
+    @DateTimeFormat
     private Date creationDate;
     @Column(name = "revision_name")
     private String revisionName;
     @Column(name = "revision_date")
+    @DateTimeFormat
     private Date revisionDate;
     @Column(name = "deal_name")
     private String dealName;

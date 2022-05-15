@@ -39,13 +39,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
+                .antMatchers("/", "/login", "/error/**", "/css/**").permitAll()
+                .antMatchers("/user/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
+                .oauth2Login().defaultSuccessUrl("/bidList/list")
+                .and()
                 .formLogin()
+                .defaultSuccessUrl("/bidList/list")
                 .permitAll()
                 .and()
-                .logout();
+                .logout()
+                .logoutUrl("/app-logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/")
+                .and().exceptionHandling()
+                .accessDeniedPage("/app/error");
     }
 
     @Bean

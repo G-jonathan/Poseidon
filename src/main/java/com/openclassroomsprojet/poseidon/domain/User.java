@@ -1,5 +1,6 @@
 package com.openclassroomsprojet.poseidon.domain;
 
+import com.openclassroomsprojet.poseidon.controlllers.customValidator.ValidPassword;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -12,6 +13,7 @@ public class User {
     @NotBlank(message = "Username is mandatory")
     private String username;
     @NotBlank(message = "Password is mandatory")
+    @ValidPassword
     private String password;
     @NotBlank(message = "FullName is mandatory")
     @Column(name = "full_name")

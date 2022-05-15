@@ -2,9 +2,9 @@ package com.openclassroomsprojet.poseidon.repositories;
 
 import com.openclassroomsprojet.poseidon.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
-
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
     User findUserByUsername(String username);
 }
