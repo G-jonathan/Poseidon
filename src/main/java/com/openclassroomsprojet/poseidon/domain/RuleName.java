@@ -3,6 +3,12 @@ package com.openclassroomsprojet.poseidon.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * JPA persistent entity. Corresponds to the mysql rule_name table
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Entity
 @Table(name = "rule_name")
 public class RuleName {

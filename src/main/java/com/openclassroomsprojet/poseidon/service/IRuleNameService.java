@@ -4,6 +4,10 @@ import com.openclassroomsprojet.poseidon.domain.RuleName;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 public interface IRuleNameService {
 
     List<RuleName> findAllRuleName();

@@ -5,6 +5,12 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
 
+/**
+ * JPA persistent entity. Corresponds to the mysql bid_list table
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Entity
 @Table(name = "bid_list")
 public class BidList {

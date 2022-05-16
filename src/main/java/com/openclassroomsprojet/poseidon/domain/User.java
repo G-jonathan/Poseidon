@@ -4,6 +4,12 @@ import com.openclassroomsprojet.poseidon.controlllers.customValidator.ValidPassw
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * JPA persistent entity. Corresponds to the mysql users table
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Entity
 @Table(name = "users")
 public class User {

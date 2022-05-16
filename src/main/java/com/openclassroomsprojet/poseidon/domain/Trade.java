@@ -7,6 +7,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
+/**
+ * JPA persistent entity. Corresponds to the mysql trade table
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Entity
 @Table(name = "trade")
 public class Trade {

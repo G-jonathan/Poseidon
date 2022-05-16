@@ -7,6 +7,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+/**
+ * JPA persistent entity. Corresponds to the mysql curve_point table
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Entity
 @Table(name = "curve_point")
 public class CurvePoint {

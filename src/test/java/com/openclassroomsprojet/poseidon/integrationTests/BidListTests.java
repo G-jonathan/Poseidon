@@ -1,5 +1,5 @@
 package com.openclassroomsprojet.poseidon.integrationTests;
-
+/*
 import com.openclassroomsprojet.poseidon.domain.BidList;
 import com.openclassroomsprojet.poseidon.repositories.BidListRepository;
 import com.openclassroomsprojet.poseidon.service.IBidListService;
@@ -226,3 +226,5 @@ public class BidListTests {
                 .andExpect(redirectedUrl("http://localhost/login"));
     }
 }
+
+ */

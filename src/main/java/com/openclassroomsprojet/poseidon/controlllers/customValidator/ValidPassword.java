@@ -9,9 +9,15 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * Interface for custom validation rules
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Documented
 @Constraint(validatedBy = PasswordConstraintValidator.class)
-@Target({ FIELD, ANNOTATION_TYPE })
+@Target({FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
 public @interface ValidPassword {
 

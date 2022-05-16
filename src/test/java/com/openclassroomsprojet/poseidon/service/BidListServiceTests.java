@@ -42,11 +42,16 @@ public class BidListServiceTests {
         bidListTest.setBidListId(randomInt.nextInt(100));
         bidListTest.setAccount("Account test");
         bidListTest.setType("Test type");
-        when(bidListRepositoryMock.findById(any())).thenReturn(Optional.of(bidListTest));
-        Optional<BidList> bidList = bidListService.findBidListById(randomInt.nextInt(100));
-        assertNotNull(bidList);
-        assertEquals("Account test", bidListTest.getAccount());
-        assertEquals("Test type", bidListTest.getType());
+        bidListTest.setBidQuantity(2.0);
+        when(bidListRepositoryMock.findBidListByBidListId(anyInt())).thenReturn(Optional.of(bidListTest));
+        Optional<BidList> optionalBidList = bidListService.findBidListById(randomInt.nextInt(100));
+        BidList finalBidList = new BidList();
+        if (optionalBidList.isPresent()) {
+            finalBidList = optionalBidList.get();
+        }
+        assertNotNull(finalBidList);
+        assertEquals("Account test", finalBidList.getAccount());
+        assertEquals("Test type", finalBidList.getType());
     }
 
     @Test

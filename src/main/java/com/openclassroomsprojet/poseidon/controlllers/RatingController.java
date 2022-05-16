@@ -22,20 +22,40 @@ import java.util.Optional;
 
 @Controller
 public class RatingController {
+
     @Autowired
     private IRatingService ratingService;
 
+    /**
+     * This method allows to display all the ratings
+     *
+     * @param model An object that contain the data for rendering into the view
+     * @return A string path of the requested view
+     */
     @RequestMapping("/rating/list")
     public String home(Model model) {
         model.addAttribute("rating", ratingService.findAllRating());
         return "rating/list";
     }
 
+    /**
+     * This method allows access to the form for creating a new rating
+     *
+     * @return A string path of the requested view
+     */
     @GetMapping("/rating/add")
     public String addRatingForm(Rating rating) {
         return "rating/add";
     }
 
+    /**
+     * This method check the @Valid object and saves it if there is no error
+     *
+     * @param rating        Object that must be validated before being saved
+     * @param bindingResult Contains the result of the @Valid object validation, we can check if errors have occurred
+     * @param model         An object that contain the data for rendering into the view
+     * @return A string path of the requested view
+     */
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
@@ -45,6 +65,13 @@ public class RatingController {
         return "rating/add";
     }
 
+    /**
+     * This method allows access to the form for update an existing rating
+     *
+     * @param id    The identifier of the object to display
+     * @param model An object that contain the data for rendering into the view
+     * @return A string path of the requested view
+     */
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Optional<Rating> rating = ratingService.findRatingById(id);
@@ -52,14 +79,30 @@ public class RatingController {
         return "rating/update";
     }
 
+    /**
+     * This method check the @Valid object and update it if there is no error
+     *
+     * @param id            The identifier of the object to check and update
+     * @param rating        Object that must be checked before being updated
+     * @param bindingResult Contains the result of the @Valid object validation, we can check if errors have occurred
+     * @param model         An object that contain the data for rendering into the view
+     * @return A string path of the requested view
+     */
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
+    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating, BindingResult bindingResult, Model model) {
+        if (!bindingResult.hasErrors()) {
             ratingService.saveRating(rating);
         }
         return "redirect:/rating/list";
     }
 
+    /**
+     * This method allows to delete an existing rating
+     *
+     * @param id    The identifier of the object to delete
+     * @param model An object that contain the data for rendering into the view
+     * @return A string path of the view to which the user is redirected
+     */
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         Optional<Rating> rating = ratingService.findRatingById(id);

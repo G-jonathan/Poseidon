@@ -1,5 +1,5 @@
 package com.openclassroomsprojet.poseidon.integrationTests;
-
+/*
 import com.openclassroomsprojet.poseidon.domain.BidList;
 import com.openclassroomsprojet.poseidon.domain.CurvePoint;
 import com.openclassroomsprojet.poseidon.repositories.CurvePointRepository;
@@ -244,3 +244,5 @@ public class CurvePointTests {
                 .andExpect(redirectedUrl("http://localhost/login"));
     }
 }
+
+ */
