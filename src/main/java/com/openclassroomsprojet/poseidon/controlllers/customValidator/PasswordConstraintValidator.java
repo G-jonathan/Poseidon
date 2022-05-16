@@ -7,31 +7,39 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import org.passay.*;
 
+/**
+ * This class validate candidate passwords against a configurable rule set. Use Passay library
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
 
     @Override
     public void initialize(ValidPassword arg0) {
     }
 
+    /**
+     * Allows to configure the rules and to build, if necessary, an error message
+     * LengthRule({min}, {max}): range of character
+     * CharacterRule(EnglishCharacterData.UpperCase, {number}): minimum number of upper-case character
+     * CharacterRule(EnglishCharacterData.LowerCase, {number}): minimum number of lower-case character
+     * CharacterRule(EnglishCharacterData.Digit, {number}): minimum number of digit character
+     * CharacterRule(EnglishCharacterData.Special, {number}): minimum number of special character
+     * WhitespaceRule(): no whitespace
+     *
+     * @param password The string to check
+     * @param context  Provides contextual data and operation when applying a given constraint validator
+     * @return boolean. The answer to the validation test
+     */
     @Override
     public boolean isValid(String password, ConstraintValidatorContext context) {
         PasswordValidator validator = new PasswordValidator(Arrays.asList(
-                // at least 8 characters
                 new LengthRule(8, 99),
-
-                // at least one upper-case character
                 new CharacterRule(EnglishCharacterData.UpperCase, 1),
-
-                // at least one lower-case character
                 new CharacterRule(EnglishCharacterData.LowerCase, 1),
-
-                // at least one digit character
                 new CharacterRule(EnglishCharacterData.Digit, 1),
-
-                // at least one symbol (special character)
                 new CharacterRule(EnglishCharacterData.Special, 1),
-
-                // no whitespace
                 new WhitespaceRule()
         ));
         RuleResult result = validator.validate(new PasswordData(password));

@@ -13,6 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.sql.DataSource;
 
+/**
+ * This class allows you to set up and configure spring security
+ *
+ * @author jonathan GOUVEIA
+ * @version 1.0
+ */
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -53,8 +59,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/app-logout")
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
+                .and()
+                .rememberMe().key("uniqueAndSecret")
                 .and().exceptionHandling()
                 .accessDeniedPage("/app/error");
     }

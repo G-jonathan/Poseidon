@@ -50,9 +50,9 @@ public class BidListController {
     /**
      * This method check the @Valid object and saves it if there is no error
      *
-     * @param bidList Object that must be validated before being saved
+     * @param bidList       Object that must be validated before being saved
      * @param bindingResult Contains the result of the @Valid object validation, we can check if errors have occurred
-     * @param model An object that contain the data for rendering into the view
+     * @param model         An object that contain the data for rendering into the view
      * @return A string path of the requested view
      */
     @PostMapping("/bidList/validate")
@@ -67,7 +67,7 @@ public class BidListController {
     /**
      * This method allows access to the form for update an existing bid
      *
-     * @param id The identifier of the object to display
+     * @param id    The identifier of the object to display
      * @param model An object that contain the data for rendering into the view
      * @return A string path of the requested view
      */
@@ -86,10 +86,10 @@ public class BidListController {
     /**
      * This method check the @Valid object and update it if there is no error
      *
-     * @param id The identifier of the object to check and update
-     * @param bidList Object that must be checked before being updated
+     * @param id            The identifier of the object to check and update
+     * @param bidList       Object that must be checked before being updated
      * @param bindingResult Contains the result of the @Valid object validation, we can check if errors have occurred
-     * @param model An object that contain the data for rendering into the view
+     * @param model         An object that contain the data for rendering into the view
      * @return A string path of the requested view
      */
     @PostMapping("/bidList/update/{id}")
@@ -105,7 +105,7 @@ public class BidListController {
     /**
      * This method allows to delete an existing bid
      *
-     * @param id The identifier of the object to delete
+     * @param id    The identifier of the object to delete
      * @param model An object that contain the data for rendering into the view
      * @return A string path of the view to which the user is redirected
      */
