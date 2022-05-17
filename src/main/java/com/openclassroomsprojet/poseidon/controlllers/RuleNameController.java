@@ -60,6 +60,7 @@ public class RuleNameController {
     public String validate(@Valid RuleName ruleName, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             ruleNameService.saveRuleName(ruleName);
+            return "redirect:/ruleName/list";
         }
         return "ruleName/add";
     }
@@ -91,8 +92,10 @@ public class RuleNameController {
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             ruleNameService.saveRuleName(ruleName);
+            return "redirect:/ruleName/list";
         }
-        return "redirect:/ruleName/list";
+        ruleName.setId(id);
+        return "ruleName/update";
     }
 
     /**

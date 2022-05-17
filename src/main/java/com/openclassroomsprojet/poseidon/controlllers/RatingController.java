@@ -60,7 +60,7 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             ratingService.saveRating(rating);
-            return "redirect:/curvePoint/list";
+            return "redirect:/rating/list";
         }
         return "rating/add";
     }
@@ -92,8 +92,10 @@ public class RatingController {
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             ratingService.saveRating(rating);
+            return "redirect:/rating/list";
         }
-        return "redirect:/rating/list";
+        rating.setId(id);
+        return "rating/update";
     }
 
     /**

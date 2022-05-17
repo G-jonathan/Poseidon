@@ -1,5 +1,6 @@
 package com.openclassroomsprojet.poseidon.service.impl;
 
+import com.openclassroomsprojet.poseidon.domain.BidList;
 import com.openclassroomsprojet.poseidon.domain.Trade;
 import com.openclassroomsprojet.poseidon.repositories.TradeRepository;
 import com.openclassroomsprojet.poseidon.service.ITradeService;
@@ -59,14 +60,27 @@ public class TradeServiceImpl implements ITradeService {
 
     /**
      * Save a Trade
+     * The creationName and the creationDate are recorded only once, at the creation
+     * The revisionDate and the revisionName are updated each time the resource is updated
      *
      * @param trade Object to be saved
      */
     @Override
     public void saveTrade(Trade trade) {
         log.info("Call service method: saveTrade(Trade trade)");
-        Date currentDate = new Date();
-        trade.setCreationDate(currentDate);
+        if (trade.getTradeId() == null) {
+            trade.setCreationDate(new Date());
+            trade.setCreationName("Trade" + trade.getAccount() + "_" + trade.getType());
+        } else {
+            Optional<Trade> tradeAlreadyExist = tradeRepository.findById(trade.getTradeId());
+            if (tradeAlreadyExist.isPresent()) {
+                Trade temporaryBidList = tradeAlreadyExist.get();
+                trade.setCreationDate(temporaryBidList.getCreationDate());
+                trade.setCreationName(temporaryBidList.getCreationName());
+                trade.setRevisionDate(new Date());
+                trade.setRevisionName("REVISION_Trade_" + trade.getAccount() + "_" + trade.getType());
+            }
+        }
         tradeRepository.save(trade);
     }
 }

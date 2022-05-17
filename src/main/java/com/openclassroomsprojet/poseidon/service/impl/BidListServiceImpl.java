@@ -59,14 +59,27 @@ public class BidListServiceImpl implements IBidListService {
 
     /**
      * Save a BidList
+     * The creationName and the creationDate are recorded only once, at the creation
+     * The revisionDate and the revisionName are updated each time the resource is updated
      *
      * @param bidList Object to be saved
      */
     @Override
     public void saveBidList(BidList bidList) {
         log.info("Call service method: saveBidList(BidList bidList)");
-        Date currentDate = new Date();
-        bidList.setCreationDate(currentDate);
+        if (bidList.getBidListId() == null) {
+            bidList.setCreationDate(new Date());
+            bidList.setCreationName("BidList_" + bidList.getAccount() + "_" + bidList.getType());
+        } else {
+            Optional<BidList> bidListAlreadySave = bidListRepository.findBidListByBidListId(bidList.getBidListId());
+            if (bidListAlreadySave.isPresent()) {
+                BidList temporaryBidList = bidListAlreadySave.get();
+                bidList.setCreationDate(temporaryBidList.getCreationDate());
+                bidList.setCreationName(temporaryBidList.getCreationName());
+                bidList.setRevisionDate(new Date());
+                bidList.setRevisionName("REVISION_BidList_" + bidList.getAccount() + "_" + bidList.getType());
+            }
+        }
         bidListRepository.save(bidList);
     }
 }

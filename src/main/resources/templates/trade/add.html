@@ -56,13 +56,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="tradeDate" class="col-sm-2 control-label">Trade date</label>
-				<div class="col-sm-10">
-					<input type="date" th:field="*{tradeDate}" id="tradeDate" placeholder="Trade date" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('tradeDate')}" th:errors="*{tradeDate}"></p>
-				</div>
-			</div>
-			<div class="form-group">
 				<label for="security" class="col-sm-2 control-label">Security</label>
 				<div class="col-sm-10">
 					<input type="text" th:field="*{security}" id="security" placeholder="Security" class="col-4">
@@ -95,20 +88,6 @@
 				<div class="col-sm-10">
 					<input type="text" th:field="*{book}" id="book" placeholder="Book" class="col-4">
 					<p class="text-danger" th:if="${#fields.hasErrors('book')}" th:errors="*{book}"></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="creationName" class="col-sm-2 control-label">Creation name</label>
-				<div class="col-sm-10">
-					<input type="text" th:field="*{creationName}" id="creationName" placeholder="Creation name" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('creationName')}" th:errors="*{creationName}"></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="dealName" class="col-sm-2 control-label">Deal name</label>
-				<div class="col-sm-10">
-					<input type="text" th:field="*{dealName}" id="dealName" placeholder="Deal name" class="col-4">
-					<p class="text-danger" th:if="${#fields.hasErrors('dealName')}" th:errors="*{dealName}"></p>
 				</div>
 			</div>
 			<div class="form-group">

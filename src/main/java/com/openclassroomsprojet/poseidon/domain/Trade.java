@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -38,7 +39,7 @@ public class Trade {
     private Double sellPrice;
     @Column(name = "trade_date")
     @DateTimeFormat
-    private Date tradeDate;
+    private Timestamp tradeDate;
     private String security;
     private String status;
     private String trader;
@@ -122,7 +123,7 @@ public class Trade {
         return tradeDate;
     }
 
-    public void setTradeDate(Date tradeDate) {
+    public void setTradeDate(Timestamp tradeDate) {
         this.tradeDate = tradeDate;
     }
 

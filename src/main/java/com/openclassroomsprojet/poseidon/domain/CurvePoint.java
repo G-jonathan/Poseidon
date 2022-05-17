@@ -1,8 +1,8 @@
 package com.openclassroomsprojet.poseidon.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -21,13 +21,17 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotNull
+    @Max(value = 127, message = "curveId should be less than 127.")
+    @Min(value = -128, message = "curveId should be upper than -128.")
     @Column(name = "curve_id")
     private int curveId;
     @Column(name = "as_Of_date")
     @DateTimeFormat
     private Date asOfDate;
+    @NotNull
     @Min(value = 0, message = "Term should not be less than 0")
     private Double term;
+    @NotNull
     private Double value;
     @Column(name = "creation_date")
     @DateTimeFormat

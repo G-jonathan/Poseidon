@@ -92,8 +92,10 @@ public class CurvePointController {
     public String updateCurve(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             curvePointService.saveCurvePoint(curvePoint);
+            return "redirect:/curvePoint/list";
         }
-        return "redirect:/curvePoint/list";
+        curvePoint.setId(id);
+        return "curvePoint/update";
     }
 
     /**

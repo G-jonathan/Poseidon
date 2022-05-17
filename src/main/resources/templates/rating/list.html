@@ -31,7 +31,7 @@
             <tr>
                 <th>Id</th>
                 <th>MoodysRating</th>
-                <th>SandPRating</th>
+                <th>SandPrating</th>
                 <th>FitchRating</th>
                 <th>OrderNumber</th>
                 <th>Action</th>
@@ -41,7 +41,7 @@
             <tr th:each="rating : ${rating}">
                 <td style="width: 10%" th:text="${rating.id}"></td>
                 <td th:text="${rating.MoodysRating}"></td>
-                <td th:text="${rating.SandPRating}"></td>
+                <td th:text="${rating.SandPrating}"></td>
                 <td style="width: 25%" th:text="${rating.FitchRating}"></td>
                 <td th:text="${rating.OrderNumber}"></td>
                 <td style="width: 15%" class="text-center">
